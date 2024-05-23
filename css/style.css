@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap');
+/* font-family: "Playfair Display", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Teachers:ital,wght@0,400..800;1,400..800&display=swap');
+/* font-family: "Teachers", sans-serif; */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+.background{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: url(../assets/wallpaper.jpg) no-repeat center;
+    background-size: cover;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+}
+
+
+
+/*----------------------estilo general del menu----------------------*/
+a{
+    text-decoration: none;
+    list-style: none;
+    color: rgb(240, 248, 255);
+}
+li
+{
+    list-style: none;
+}
+
+.menu{
+    width: 45rem;
+    border: 2px solid #fafafa30;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.glass-effect {
+    background: #fafafa20;
+    backdrop-filter: blur(0.4rem);
+    -webkit-backdrop-filter: blur(0.4rem);
+}
+
+.menuItem {
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+}
+
+.subMenu{
+    transition: height 0.4s;
+    height: 0;
+    font-family: "Teachers", sans-serif;
+}
+
+h1{
+    font-family: "Playfair Display", serif;
+    font-size: 35px;
+    width: 45rem;
+    text-align: center;
+    background-color: #fafafa20;
+    border: 2px solid #fafafa30;
+    color: #F0F8FF;
+    padding: 30px 0px;
+    border-radius: 10px;
+}
+
+
+
+
+/*----------------------estilo opciones principales----------------------*/
+.menuLink{
+    font-size: 30px;
+    margin: 30px;
+    font-family: "Playfair Display", serif;
+}
+
+.menuMostrar{
+    padding: 00px 100px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuMostrarClick:hover a{
+    color: aqua;
+}
+
+.menuMostrarClick:hover svg path {
+    fill: aqua;
+}
+
+.menuMostrarClick{
+    cursor: pointer;
+}
+
+.listArrow{
+    margin-left: auto;
+    fill: aliceblue;
+    transition: transform 0.4s;
+}
+
+.listaTareasContainer{
+    margin: 0px 100px;
+    text-align: left;
+}
+
+.arrow .listArrow{
+    transform: rotate(90deg);
+}
+
+
+
+
+/*----------------------estilo consultar tareas----------------------*/
+h2{
+    font-size: 20px;
+    padding: 20px 0px;
+}
+
+.listaTareasItem{
+    padding: 0px 60px 5px 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.botonesListaTareas{
+    display: flex;
+    gap: 10px;
+
+}
+ button.boton{
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+ }
+
+ button.boton:hover {
+    transform: scale(1.3);
+ }
+
+ .lineaDivisora{
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+ }
+
+
+
+
+ /*----------------------estilo crear tareas----------------------*/
+
+ .inputCrear {
+    font-family: "Teachers", sans-serif;
+    background-color: transparent;
+    color: #000000;
+    border: transparent;
+    border-bottom: 2px solid #000000;
+    height: 40px;
+    width: 300px;
+    font-size: 16px;
+ }
+
+ #input-tarea::placeholder {
+    color: #000000;
+}
+
+.subMenuCrear{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 0px 130px 5px 130px;
+}
+
+.subMenuCrearInput{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.botonCrear{
+    background-color: #fafafa10;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 40px;
+    width: 110px;
+    font-family: "Teachers", sans-serif;
+    font-size: 16px;
+}
+
+.botonCrear:hover {
+    background-color: #00ffff80;
+}
+
+
+
+
+
+ /*----------------------estilo tareas completadas----------------------*/
+
+
+ .botonLimpiar{
+    margin: 0 auto;
+    position: relative;
+    margin: 10px 30px 30px 30px;
+    background-color: #0b99af;
+    border: transparent;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+ }
+
+ .botonLimpiar::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #048497;
+    z-index: -1;
+    border-radius: 10px;
+    transform: translateY(4px);
+ }
+
+
+.botonLimpiar:active{
+    transform: translateY(4px);
+}
+
+.botonLimpiar:active::before{
+    transform: translateY(0);
+}
+
+
+ /*----------------------estilo ventana emergente----------------------*/
+
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 130px;
+    border-radius: 10px;
+    background: #fafafa20;
+    backdrop-filter: blur(0.4rem);
+    -webkit-backdrop-filter: blur(0.4rem);
+    color: #F0F8FF;
+    border: 2px solid #fafafa30;;
+}
+
+#popupTexto{
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+}
+
+#popupBoton{
+    background-color: #fafafa10;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 20px;
+    width: 60px;
+    font-family: "Teachers", sans-serif;
+    font-size: 16px;
+}
+
+#popupBoton:hover {
+    background-color: #00ffff80;
+}
+
+#popup::backdrop{
+    background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+#mostrarMensaje {
+    font-family: "Teachers", sans-serif;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fafafa20;
+    border: 1px solid #fafafa20;
+    color: rgb(240, 248, 255);
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+}
