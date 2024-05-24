@@ -3,98 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="stylesheet" href="css/style.css">
-
     <title>Document</title>
 </head>
-
-
 <body>
-
-    <article class="background">
+    <div class="background"></div>
+    <div class="content">
 
         <h1>Bienvenido a tu lista de tareas</h1>
-
+        
         <ul class="menu glass-effect">
-
             <!--ocpion 1: Consultar tareas-->
             <li class="menuItem">
-    
                 <div class="menuMostrar menuMostrarClick">
                     <a href="#" class="menuLink">Consultar tareas pendientes</a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="listArrow">
                         <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
                     </svg>
-                    
                 </div>
-    
                 <ul class="subMenu">
                     <li class="subMenuInside">
                         <div id="listaTareas"></div>
                     </li>
                 </ul>
-                
             </li>
-    
-            <!--ocpion 2: Consultar tareas-->
+            <!--ocpion 2: Crear tarea-->
             <li class="menuItem">
-    
                 <div class="menuMostrar menuMostrarClick">
                     <a href="#" class="menuLink">Crear Tarea</a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="listArrow">
                         <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
                     </svg>
                 </div>
-    
                 <ul class="subMenu">
                     <div class="subMenuCrear">
                         <li class="subMenuCrearInput">
-                            <input type="text" id="input-tarea" class = "inputCrear" placeholder="Nueva tarea">
-                            <input type="date" id="input-fecha" class = "inputCrear" placeholder="Fecha límite">
+                            <input type="text" id="input-tarea" class="inputCrear" placeholder="Nueva tarea">
+                            <input type="date" id="input-fecha" class="inputCrear" placeholder="Fecha límite">
                         </li>
                         <button id="boton-agregar-tarea" class="botonCrear">Agregar tarea</button>
                     </div>
-                    
                 </ul>
-
                 <dialog id="popup">
                     <div id="popupContenido">
                         <h2 id="popupTexto">Por favor, complete todos los campos.</h2>
                         <button id="popupBoton">OK</button>
                     </div>
                 </dialog>
-                
             </li>
-    
-    
             <!--ocpion 3: Consultar tareas completadas-->
             <li class="menuItem">
-    
                 <div class="menuMostrar menuMostrarClick">
                     <a href="#" class="menuLink">Tareas completadas</a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="listArrow">
                         <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
                     </svg>
                 </div>
-    
                 <ul class="subMenu">
                     <li class="subMenuLimpiar">
                         <div id="listaTareasCompletadas"></div>
-                        
                     </li>  
                 </ul>
-                
             </li>
-    
         </ul>
-
-    </article>
-    
-
-    
-
-
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
