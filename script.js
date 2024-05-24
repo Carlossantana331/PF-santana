@@ -23,7 +23,97 @@ mostrarElementos.forEach(listarElementos => {
     })
 });
 
+/*-------------------------------------------codigo necesario para api del clima-----------------------------------------------*/
+window.addEventListener('load', () => {
 
+    /*variables que capturan el id del HTML*/
+    let temperatura = document.getElementById('temperatura')
+    let climaDescripcion = document.getElementById('climaDescripcion')
+  
+    let ubicacionActual =document.getElementById('ubicacionActual')
+    let iconoClima = document.getElementById('iconoClima')
+  
+    let mensajeError = document.getElementById('mensajeError'); // Elemento para mostrar errores
+  
+  
+    /*verifica si hay permisoso de ubicacion*/
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+  
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+  
+          /*url de la api de openweather*/
+          const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=es&appid=dafdc851dad1e1a058c3479b6f55ccf2`
+  
+          /*realiza una solicitud fetch*/
+          fetch(url)
+            .then(response => {return response.json()})
+            .then(datos => {
+  
+              /*agrega la teperatuta al HTML*/ 
+              let temp = Math.round(datos.main.temp)
+              temperatura.textContent = `${temp} °C`
+  
+              let descripcion = datos.weather[0].description
+              climaDescripcion.textContent = descripcion.toUpperCase()
+  
+              ubicacionActual.textContent = datos.name
+              
+  
+              /*selecciona el icono correspondiente al clima*/
+              switch (datos.weather[0].main) {
+                case 'Thunderstorm':
+                  iconoClima.src='assets/iconos_clima/thunder.svg'
+                  break;
+  
+                case 'Drizzle':
+                  iconoClima.src='assets/iconos_clima/rainy-2.svg'
+                  break;
+  
+                case 'Rain':
+                  iconoClima.src='assets/iconos_clima/rainy-7.svg'
+                  break;
+  
+                case 'Snow':
+                  iconoClima.src='assets/iconos_clima/snowy-6.svg'
+                  break;     
+  
+                case 'Clear':
+                  iconoClima.src='assets/iconos_clima/day.svg'
+                  break;
+  
+                case 'Atmosphere':
+                  iconoClima.src='assets/iconos_clima/weather.svg'
+                  break;  
+                    
+                case 'Clouds':
+                  iconoClima.src='assets/iconos_clima/cloudy-day-1.svg'
+                  break;
+  
+                default:
+                  iconoClima.src='assets/iconos_clima/cloudy-day-1.svg'
+              }
+            })
+  
+            .catch(error => {
+              // Muestra un mensaje de error en el DOM en caso de fallo en la solicitud
+              mensajeError.textContent = 'Error al obtener datos del clima. Por favor, inténtelo de nuevo más tarde.';
+              console.error('Error al obtener datos del clima:', error);
+            });
+        }, error => {
+          // Muestra un mensaje de error en el DOM en caso de fallo en la geolocalización
+          mensajeError.textContent = 'Error al obtener la geolocalización. Por favor, revise los permisos de ubicación.';
+          console.error('Error al obtener la geolocalización:', error);
+        });
+      } else {
+        // Muestra un mensaje de error en el DOM si la geolocalización no está disponible en el navegador
+        mensajeError.textContent = 'Geolocalización no está disponible en este navegador.';
+        console.error('Geolocalización no está disponible en este navegador.');
+      }
+    });
+
+/*------------------------------------------------codigo del simulador----------------------------------------------------------*/
 // Array para almacenar las tareas
 let tareas = [];
 let tareasCompletadas = [];
