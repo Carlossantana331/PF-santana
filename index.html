@@ -6,29 +6,38 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
+
+
 <body>
     <div class="background"></div>
 
-    <div id="widgetContainer">
-        <div id="clima">
-          <h2 id= "temperatura"></h2>
-          <h2 id= "climaDescripcion"></h2>
 
-        </div>
-
-        <div id="ubicacion">
-          <h2 id="ubicacionActual"></h2>
-          <img id="iconoClima" class="iconoClima" src="" alt="" height="128" width="128">
-
-        </div>
-
-        <div id="mensajeError"></div>
-    </div>
-
-    <div class="content">
-
-        <h1>Bienvenido a tu lista de tareas</h1>
+    <section class="content">
         
+        <article class="bienvenida">
+            <h1>Bienvenido a tu lista de tareas</h1>
+
+            <div id="widgetContainer">
+                <div id="clima" class="widget">
+                    <h3 id="ubicacionActual"></h3>
+                    <h3 id= "temperatura"></h3>
+                    
+                </div>
+        
+                <div id="ubicacion" class="widget">
+                    <h3 id= "climaDescripcion"></h3>
+                    <img id="iconoClima" class="iconoClima" src="" alt="">
+        
+                </div>
+        
+                <div id="mensajeError"></div>
+            </div>
+
+            <span id="loader" class="loader"></span>
+
+        </article>
+        
+            
         <ul class="menu glass-effect">
             <!--ocpion 1: Consultar tareas-->
             <li class="menuItem">
@@ -83,7 +92,11 @@
                 </ul>
             </li>
         </ul>
-    </div>
+    </section>
+
+
+    
+    
     <script src="script.js"></script>
 </body>
 </html>

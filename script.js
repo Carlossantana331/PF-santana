@@ -34,7 +34,16 @@ window.addEventListener('load', () => {
     let iconoClima = document.getElementById('iconoClima')
   
     let mensajeError = document.getElementById('mensajeError'); // Elemento para mostrar errores
-  
+    
+
+    //variable para mostar spiner de carga en lo que se cargan los datos
+    let cleanUp = () => {
+        let widget = document.getElementById("widgetContainer")
+        let loader = document.getElementById("loader")
+
+        loader.style.display = 'none';
+        widget.style.display = 'flex'
+    }
   
     /*verifica si hay permisoso de ubicacion*/
     if (navigator.geolocation) {
@@ -58,7 +67,7 @@ window.addEventListener('load', () => {
               let descripcion = datos.weather[0].description
               climaDescripcion.textContent = descripcion.toUpperCase()
   
-              ubicacionActual.textContent = datos.name
+              ubicacionActual.textContent = datos.name.toUpperCase()
               
   
               /*selecciona el icono correspondiente al clima*/
@@ -94,22 +103,24 @@ window.addEventListener('load', () => {
                 default:
                   iconoClima.src='assets/iconos_clima/cloudy-day-1.svg'
               }
+
+              cleanUp()
             })
   
             .catch(error => {
               // Muestra un mensaje de error en el DOM en caso de fallo en la solicitud
               mensajeError.textContent = 'Error al obtener datos del clima. Por favor, inténtelo de nuevo más tarde.';
-              console.error('Error al obtener datos del clima:', error);
+              
             });
         }, error => {
           // Muestra un mensaje de error en el DOM en caso de fallo en la geolocalización
           mensajeError.textContent = 'Error al obtener la geolocalización. Por favor, revise los permisos de ubicación.';
-          console.error('Error al obtener la geolocalización:', error);
+          
         });
       } else {
         // Muestra un mensaje de error en el DOM si la geolocalización no está disponible en el navegador
         mensajeError.textContent = 'Geolocalización no está disponible en este navegador.';
-        console.error('Geolocalización no está disponible en este navegador.');
+        
       }
     });
 
