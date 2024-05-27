@@ -218,16 +218,19 @@ function agregarNuevaTarea() {
         actualizarListaTareas();
         mostrarMensaje("Tareas agregada exitosamente")
     } else {
-        let btn = document.querySelector('#boton-agregar-tarea');
-btn.addEventListener('click', () => {
-  Swal.fire({
-    icon: "error",
-    title: "Oops...",
-    text: "Por favor, complete todos los campos.",
-  });
-});
-    }
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Por favor, complete todos los campos.",
+          });
+      }
 }
+
+// Obtener el botón "Agregar tarea" por su ID
+let botonAgregarTarea = document.getElementById("boton-agregar-tarea");
+
+// Agregar un event listener para el clic en el botón
+botonAgregarTarea.addEventListener("click", agregarNuevaTarea);
 
 
 
@@ -309,15 +312,4 @@ function mostrarMensaje(mensaje) {
         mensajeElemento.parentNode.removeChild(mensajeElemento);
     }, 2000);
 }
-
-
-
-// Obtener el botón "Agregar tarea" por su ID
-let botonAgregarTarea = document.getElementById("boton-agregar-tarea");
-
-// Agregar un event listener para el clic en el botón
-botonAgregarTarea.addEventListener("click", agregarNuevaTarea);
-
-
-
 
