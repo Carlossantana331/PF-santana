@@ -218,20 +218,16 @@ function agregarNuevaTarea() {
         actualizarListaTareas();
         mostrarMensaje("Tareas agregada exitosamente")
     } else {
-        document.getElementById("boton-agregar-tarea").addEventListener('click', () => {
-            popup.showModal();
-        });
+        let btn = document.querySelector('#boton-agregar-tarea');
+btn.addEventListener('click', () => {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "Por favor, complete todos los campos.",
+  });
+});
     }
 }
-
-//variables para hacer funcionar la ventana emergente (popup)
-let popupBoton = document.querySelector('#popupBoton')
-let popup = document.querySelector('#popup')
-document.getElementById("popupBoton").addEventListener('click', () => {
-    popup.close();
-});
-
-
 
 
 
