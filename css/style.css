@@ -257,12 +257,21 @@ h2{
     font-size: 16px;
 }
 
+.botonesCrear{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .botonCrear:hover {
     background-color: #00ffff80;
 }
 
-
-
+.inputCrearCat{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 
  /*----------------------estilo tareas completadas----------------------*/
@@ -302,6 +311,11 @@ h2{
     transform: translateY(0);
 }
 
+
+div:where(.swal2-container).swal2-center>.swal2-popup {
+    font-family: "Teachers", sans-serif;;
+    box-shadow: 14px 14px 20px 0px rgb(0 0 0 / 49%);
+}
 
  /*----------------------estilo ventana emergente----------------------*/
 
@@ -361,9 +375,6 @@ h2{
     z-index: 1000;
     display: none;
 }
-
-
-
 
 
 

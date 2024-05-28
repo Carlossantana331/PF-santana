@@ -124,7 +124,7 @@ window.addEventListener('load', () => {
       }
     });
 
-/*------------------------------------------------codigo del simulador----------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------codigo del simulador-----------------------------------------------------------------------------------*/
 // Array para almacenar las tareas
 let tareas = [];
 let tareasCompletadas = [];
@@ -188,11 +188,27 @@ function tareaCompletada(index) {
 
 //funcion boton de eliminar tarea 
 function eliminarTarea(index) {
-    tareas.splice(index, 1);
-    localStorage.setItem("tareas", JSON.stringify(tareas));
-    actualizarListaTareas();
-    mostrarMensaje("Tareas eliminada exitosamente")
-}
+    Swal.fire({
+        title: "¿Estás seguro de eliminar la tareas?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí"
+  
+    }).then((result) => {
+        if (result.isConfirmed) {
+          tareas.splice(index, 1);
+          localStorage.setItem("tareas", JSON.stringify(tareas));
+          actualizarListaTareas();
+            // Mostrar mensaje de éxito
+            Swal.fire({
+                title: "Tarea eliminada",
+                icon: "success"
+            });
+        }
+    });
+  }
 
 
 
@@ -265,13 +281,33 @@ function actualizarListaTareasCompletadas() {
 }
 
 
-//funcion para limpiar el historial de tareas completadas
+// Función para limpiar el historial de tareas completadas con confirmación de SweetAlert
 function limpiarTareasCompletadas() {
-    tareasCompletadas = []; // Vaciar el array de tareas completadas
-    localStorage.removeItem("tareasCompletadas"); // Remover las tareas completadas del almacenamiento local
-    actualizarListaTareasCompletadas(); // Actualizar la visualización de la lista de tareas completadas
-    mostrarMensaje("Tareas completadas eliminadas")
-}
+    Swal.fire({
+        title: "¿Estás seguro de eliminar las tareas completadas?",
+        text: "Si lo haces, no habrá forma de recuperarlas.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, ¡elimínalas!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Vaciar el array de tareas completadas
+            tareasCompletadas = [];
+            // Remover las tareas completadas del almacenamiento local
+            localStorage.removeItem("tareasCompletadas");
+            // Actualizar la visualización de la lista de tareas completadas
+            actualizarListaTareasCompletadas();
+            // Mostrar mensaje de éxito
+            Swal.fire({
+                title: "Eliminadas",
+                text: "Tus tareas han sido eliminadas.",
+                icon: "success"
+            });
+        }
+    });
+  }
 
 
 
@@ -312,4 +348,11 @@ function mostrarMensaje(mensaje) {
         mensajeElemento.parentNode.removeChild(mensajeElemento);
     }, 2000);
 }
+
+
+
+
+
+
+
 
